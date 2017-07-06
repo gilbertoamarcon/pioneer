@@ -11,6 +11,6 @@
 
 	<node pkg="joy" type="joy_node" name="joystick"/>
 	
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(rospack find pioneer)/rviz/pioneer.rviz"/>
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find pioneer)/rviz/pioneer.rviz"/>
 
 </launch>
