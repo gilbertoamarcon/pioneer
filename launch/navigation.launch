@@ -12,7 +12,7 @@
 	<include file="$(find pioneer)/launch/amcl.launch"/>
 
 	<!-- Move base -->
-	<include file="$(find pioneer)/move_base.launch"/>
+	<include file="$(find pioneer)/launch/move_base.launch"/>
 
 	<!-- Waypoint navigation -->
 	<node pkg="simple_navigation_goals" type="base_link_navigation_client" name="base_link_goal_client" output="screen"/>
