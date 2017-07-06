@@ -1,5 +1,12 @@
 #!/bin/bash
 
+## Usage: rosrun pioneer pioneer-navigation.sh $(rospack find pioneer)/maps/printer_000.yaml
+
+
+# Command-line argument renaming 
+map_name=$(rospack find pioneer)/maps/printer_000.yaml
+map_name=$1
+
 echo "Launching roscore..."
 roscore &
 pid=$!
@@ -17,7 +24,7 @@ pid="$! $pid"
 sleep 3s
 
 echo "Launching navigation stack..."
-roslaunch pioneer navigation.launch map_name:=$(rospack find pioneer)/maps/printer_000.yaml &
+roslaunch pioneer navigation.launch map_name:=$map_name &
 pid="$! $pid"
 
 sleep 3s
