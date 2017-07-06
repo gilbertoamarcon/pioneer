@@ -23,7 +23,7 @@ pid="$! $pid"
 sleep 3s
 
 echo "Launching pioneer controller..."
-roslaunch pioneer_test pioneer_controller.launch &
+roslaunch pioneer_test pioneer_controller_spin_recover.launch &
 pid="$! $pid"
 
 sleep 3s
