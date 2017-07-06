@@ -1,0 +1,22 @@
+<launch>
+
+	<!-- Command-line args -->
+	<arg name="map_name" />
+
+	<!-- Map server -->
+	<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_name)" >
+		<param name="frame_id" value="/map" />
+	</node>
+
+	<!-- AMCL -->
+	<include file="$(find pioneer)/launch/amcl.launch"/>
+
+	<!-- Move base -->
+	<include file="$(find pioneer)/move_base.launch"/>
+
+	<!-- Waypoint navigation -->
+	<node pkg="simple_navigation_goals" type="base_link_navigation_client" name="base_link_goal_client" output="screen"/>
+	<node pkg="simple_navigation_goals" type="map_navigation_client" name="map_goal_client" output="screen"/>
+
+</launch>
+

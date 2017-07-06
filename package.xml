@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+	<name>pioneer</name>
+	<version>0.0.0</version>
+	<description>The pioneer package</description>
+	<maintainer email="marcondg@oregonstate.edu">Gilberto Marcon dos Santos</maintainer>
+	<license>BSD</license>
+	<author email="marcondg@oregonstate.edu">Gilberto Marcon dos Santos</author>
+
+	<run_depend>roscpp</run_depend>
+	<run_depend>rospy</run_depend>
+
+	<export>
+	</export>
+</package>
+
