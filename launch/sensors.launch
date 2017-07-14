@@ -1,0 +1,13 @@
+<launch>
+
+	<!-- Robot sensor transforms -->
+	<node pkg="pioneer" type="odometry_publisher" name="odometry_publisher"/>
+	
+	<!-- RPLidar -->
+	<include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+	
+	<!-- Frame transforms -->
+	<node pkg="pioneer" type="laser_tf_broadcaster" name="laser_tf_broadcaster"/>
+	<node pkg="pioneer" type="laser_publisher" name="laser_publisher"/>
+	
+</launch>

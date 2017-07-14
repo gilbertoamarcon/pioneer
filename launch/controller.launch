@@ -1,0 +1,11 @@
+<launch>
+
+	<!-- Robot controller parameters -->
+	<node pkg="pioneer" type="pid_controller" name="pid_controller">
+		<rosparam file="$(find pioneer)/params/controller_params.yaml" command="load"/>
+		<remap from="/RosAria/cmd_vel" to="/controller_cmd_vel"/>
+	</node>
+
+	<node pkg="pioneer" type="move_base_recover" name="move_base_recover" output="screen"/>
+
+</launch>

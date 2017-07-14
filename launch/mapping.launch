@@ -1,0 +1,19 @@
+<launch>
+
+	<!-- SLAM mapping nodes -->
+	<node pkg="gmapping" type="slam_gmapping" name="gmapping">
+		<remap from="scan" to="base_scan"/> 
+		<param name="minimumScore" value="600.0" />
+		<param name="linearUpdate" value="0.00" />
+		<param name="angularUpdate" value="0.00" />
+		<param name="delta" value="0.025" />
+		<param name="xmin" value="-8" />
+		<param name="xmax" value="+8" />
+		<param name="ymin" value="-8" />
+		<param name="ymax" value="+8" />
+	</node>
+
+	<!-- Navigation -->
+	<include file="$(find pioneer)/launch/navigation.launch"/>
+
+</launch>

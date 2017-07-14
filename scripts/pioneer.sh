@@ -1,11 +1,11 @@
 #!/bin/bash
 
-## Usage: rosrun pioneer pioneer-navigation.sh $(rospack find pioneer)/maps/printer_000.yaml
-
+## Usage: rosrun pioneer pioneer.sh localization $(rospack find pioneer)/maps/printer_000.yaml
+## Usage: rosrun pioneer pioneer.sh mapping
 
 # Command-line argument renaming 
-map_name=$(rospack find pioneer)/maps/printer_000.yaml
-map_name=$1
+mode=$1
+map_name=$2
 
 echo "Launching roscore..."
 roscore &
@@ -18,25 +18,25 @@ pid="$! $pid"
 sleep 3s
 
 echo "Launching sensors..."
-roslaunch pioneer_test pioneer_sensors.launch &
+roslaunch pioneer sensors.launch &
 pid="$! $pid"
 
 sleep 3s
 
-echo "Launching navigation stack..."
-roslaunch pioneer navigation.launch map_name:=$map_name &
+echo "Launching mapping/localization stack..."
+roslaunch pioneer $mode.launch map_name:=$map_name &
 pid="$! $pid"
 
 sleep 3s
 
 echo "Launching pioneer controller..."
-roslaunch pioneer_test pioneer_controller_spin_recover.launch &
+roslaunch pioneer controller.launch &
 pid="$! $pid"
 
 sleep 3s
 
 echo "Launching robot description..."
-roslaunch pioneer_test pioneer_description.launch &
+roslaunch pioneer description.launch &
 pid="$! $pid"
 
 sleep 2s

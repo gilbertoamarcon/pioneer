@@ -1,0 +1,18 @@
+<launch>
+
+	<!-- Command-line args -->
+	<arg name="map_name" />
+
+	<!-- Map server -->
+	<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_name)" >
+		<param name="frame_id" value="/map" />
+	</node>
+
+	<!-- AMCL -->
+	<include file="$(find pioneer)/launch/amcl.launch"/>
+
+	<!-- Navigation -->
+	<include file="$(find pioneer)/launch/navigation.launch"/>
+
+</launch>
+

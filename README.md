@@ -1,4 +1,4 @@
-# box
+# Pioneer
 
 Simplified version of the Pioneer Packages from [Jen Jen Chung](https://github.com/JenJenChung).
 
@@ -14,8 +14,15 @@ Dependencies:
 
 On a pioneer, run:
 
-```rosrun pioneer pioneer-navigation.sh```
+```rosrun pioneer pioneer.sh localization $(rospack find pioneer)/maps/printer_000.yaml```
 
 [Optional] On a desktop computer, run:
 
 ```roslaunch pioneer teleop_ps3.launch```
+
+
+
+For mapping, launch on the pioneer:
+
+```rosrun pioneer pioneer.sh mapping```
+
