@@ -4,7 +4,13 @@
 	<node pkg="pioneer" type="odometry_publisher" name="odometry_publisher"/>
 	
 	<!-- RPLidar -->
-	<include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+	<node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+		<param name="serial_port"         type="string" value="/dev/rplidar"/>  
+		<param name="serial_baudrate"     type="int"    value="115200"/>
+		<param name="frame_id"            type="string" value="laser"/>
+		<param name="inverted"            type="bool"   value="false"/>
+		<param name="angle_compensate"    type="bool"   value="true"/>
+	</node>
 	
 	<!-- Frame transforms -->
 	<node pkg="pioneer" type="laser_tf_broadcaster" name="laser_tf_broadcaster"/>
