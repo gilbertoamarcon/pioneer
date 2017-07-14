@@ -26,7 +26,7 @@ Clone the dependencies and the main package:
 
 ```rosdep update```
 
-```rosdep install ROSARIA```
+```rosdep install rosaria```
 
 Go to the root workspace directory:
 
