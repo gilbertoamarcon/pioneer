@@ -1,7 +1,10 @@
 <launch>
 
-	<!-- Command-line args -->
-	<arg name="map_name" />
+	<!-- Map file -->
+	<arg name="map_name" default="$(find pioneer)/maps/printer.yaml"/>
+
+	<!-- Pioneer -->
+	<include file="$(find pioneer)/launch/pioneer.launch"/>
 
 	<!-- Map server -->
 	<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_name)" >
@@ -10,9 +13,6 @@
 
 	<!-- AMCL -->
 	<include file="$(find pioneer)/launch/amcl.launch"/>
-
-	<!-- Navigation -->
-	<include file="$(find pioneer)/launch/navigation.launch"/>
 
 </launch>
 

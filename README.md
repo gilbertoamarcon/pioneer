@@ -48,11 +48,11 @@ Configure the Lidar USB port aliases:
 
 For localization:
 
-```rosrun pioneer pioneer.sh localization $(rospack find pioneer)/maps/printer_000.yaml```
+```roslaunch pioneer localization.launch```
 
 For mapping:
 
-```rosrun pioneer pioneer.sh mapping```
+```roslaunch pioneer mapping.launch```
 
 
 ### On a workstation computer ###

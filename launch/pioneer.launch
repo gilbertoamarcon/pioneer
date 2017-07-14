@@ -1,0 +1,20 @@
+<launch>
+
+	<!-- Rosaria -->
+	<node pkg="rosaria" type="RosAria" name="RosAria" output="screen">
+		<param name="port" value="/dev/rosaria" />
+	</node>
+
+	<!-- Sensors -->
+	<include file="$(find pioneer)/launch/sensors.launch"/>
+
+	<!-- Navigation -->
+	<include file="$(find pioneer)/launch/navigation.launch"/>
+
+	<!-- Controller -->
+	<include file="$(find pioneer)/launch/controller.launch"/>
+
+	<!-- Description -->
+	<include file="$(find pioneer)/launch/description.launch"/>
+
+</launch>
