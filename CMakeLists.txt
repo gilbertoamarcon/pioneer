@@ -23,6 +23,10 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+add_executable(teleop_joy src/teleop_joy.cpp)
+target_link_libraries(teleop_joy ${catkin_LIBRARIES})
+add_dependencies(teleop_joy ${catkin_EXPORTED_TARGETS})
+
 add_executable(base_link_navigation_client src/base_link_navigation_client.cpp)
 target_link_libraries(base_link_navigation_client ${catkin_LIBRARIES})
 add_dependencies(base_link_navigation_client ${catkin_EXPORTED_TARGETS})
