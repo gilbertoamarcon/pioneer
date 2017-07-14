@@ -6,12 +6,14 @@ include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  std_msgs
   geometry_msgs
+  sensor_msgs
   nav_msgs
+  move_base_msgs
+  actionlib
   roscpp
   rospy
-  sensor_msgs
-  std_msgs
   tf
 )
 
@@ -20,6 +22,14 @@ catkin_package()
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
+
+add_executable(base_link_navigation_client src/base_link_navigation_client.cpp)
+target_link_libraries(base_link_navigation_client ${catkin_LIBRARIES})
+add_dependencies(base_link_navigation_client ${catkin_EXPORTED_TARGETS})
+
+add_executable(map_navigation_client src/map_navigation_client.cpp)
+target_link_libraries(map_navigation_client ${catkin_LIBRARIES})
+add_dependencies(map_navigation_client ${catkin_EXPORTED_TARGETS})
 
 add_executable(laser_publisher src/laser_publisher.cpp)
 target_link_libraries(laser_publisher ${catkin_LIBRARIES})
