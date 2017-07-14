@@ -13,7 +13,7 @@ pid=$!
 sleep 5s
 
 echo "Connecting to RosAria..."
-rosrun rosaria RosAria serial_port:='/dev/rosaria'&
+roslaunch pioneer rosaria.launch &
 pid="$! $pid"
 sleep 3s
 
