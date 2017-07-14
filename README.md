@@ -36,6 +36,9 @@ Run catkin_make:
 
 ```catkin_make ```
 
+Configure the Lidar USB port aliases:
+
+```$(rospack find pioneer)/scripts/create_udev_rules.sh```
 
 
 ## Usage ##
