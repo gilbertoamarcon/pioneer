@@ -3,6 +3,7 @@
 	<!-- Rosaria -->
 	<node pkg="rosaria" type="RosAria" name="RosAria" output="screen">
 		<param name="port" value="/dev/rosaria" />
+		<remap from="/RosAria/cmd_vel" to="/cmd_vel"/>
 	</node>
 
 	<!-- Sensors -->
@@ -16,9 +17,6 @@
 		<rosparam file="$(find pioneer)/params/global_costmap_params.yaml" command="load" />
 		<rosparam file="$(find pioneer)/params/base_local_planner_params.yaml" command="load" />
 	</node>
-
-	<!-- Controller -->
-	<include file="$(find pioneer)/launch/controller.launch"/>
 
 	<!-- Description -->
 	<include file="$(find pioneer)/launch/description.launch"/>

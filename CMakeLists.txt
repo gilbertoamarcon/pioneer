@@ -35,17 +35,9 @@ add_executable(laser_tf_broadcaster src/laser_tf_broadcaster.cpp)
 target_link_libraries(laser_tf_broadcaster ${catkin_LIBRARIES})
 add_dependencies(laser_tf_broadcaster ${catkin_EXPORTED_TARGETS})
 
-add_executable(pid_controller src/pid_controller.cpp)
-target_link_libraries(pid_controller ${catkin_LIBRARIES})
-add_dependencies(pid_controller ${catkin_EXPORTED_TARGETS})
-
 add_executable(odometry_publisher src/odometry_publisher.cpp)
 target_link_libraries(odometry_publisher ${catkin_LIBRARIES})
 add_dependencies(odometry_publisher ${catkin_EXPORTED_TARGETS})
-
-add_executable(move_base_recover src/move_base_recover.cpp)
-target_link_libraries(move_base_recover ${catkin_LIBRARIES})
-add_dependencies(move_base_recover ${catkin_EXPORTED_TARGETS})
 
 #set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
