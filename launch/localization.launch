@@ -1,7 +1,7 @@
 <launch>
 
 	<!-- Map file -->
-	<arg name="map_name" default="$(find pioneer)/maps/map.yaml"/>
+	<arg name="map_name" default="$(find pioneer)/maps/printer_boxes.yaml"/>
 
 	<!-- Pioneer -->
 	<include file="$(find pioneer)/launch/pioneer.launch"/>

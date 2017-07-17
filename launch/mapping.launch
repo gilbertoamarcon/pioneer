@@ -9,6 +9,13 @@
 		<param name="minimumScore" value="600.0" />
 		<param name="linearUpdate" value="0.00" />
 		<param name="angularUpdate" value="0.00" />
+		<param name="srr" value="0.05" />
+		<param name="srt" value="0.05" />
+		<param name="str" value="0.05" />
+		<param name="stt" value="0.05" />
+		<param name="delta" value="0.05" />
+		<param name="iterations" value="20" />
+		<param name="particles" value="50" />
 		<param name="delta" value="0.025" />
 		<param name="xmin" value="-8" />
 		<param name="xmax" value="+8" />
