@@ -10,7 +10,7 @@ TrajectoryPlannerROS:
   escape_vel: 0.0
   holonomic_robot: false
   yaw_goal_tolerance: 0.0875
-  xy_goal_tolerance: 0.05
+  xy_goal_tolerance: 0.025
   latch_xy_goal_tolerance: true
   sim_time: 1.5
   meter_scoring: true
