@@ -9,6 +9,13 @@ sudo apt-get upgrade --yes
 # Install pleasentries, like vim and git
 sudo apt-get -y install git
 sudo apt-get -y install openssh-server
+sudo apt-get -y install python-setuptools
+sudo apt-get -y install python-pip
+sudo -H pip install --upgrade pip
+sudo -H pip install deepdish==0.3.6
+sudo -H pip install oyaml==0.7
+sudo -H pip install numpy==1.15.4
+sudo -H pip install opencv_python==4.0.0.21
 ssh-keygen -t rsa
 
 # ROS Kinetic installation commands
