@@ -38,8 +38,7 @@ echo "source $HOME/catkin_ws/devel/setup.bash" >> $HOME/.bashrc
 source $HOME/.bashrc
 
 # Install ARIA (dependency of rosaria)
-wget -P /tmp/ http://robots.mobilerobots.com/ARIA/download/current/libaria_2.9.1+ubuntu16_amd64.deb
-sudo dpkg -i /tmp/libaria_2.9.1+ubuntu16_amd64.deb
+sudo dpkg -i setup/libaria_2.9.1+ubuntu16_amd64.deb
 
 # Setup Pioneer code
 cd $HOME/catkin_ws/src
