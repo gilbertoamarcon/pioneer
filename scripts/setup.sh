@@ -32,6 +32,9 @@ sudo apt-get -y install ros-kinetic-ros-control
 sudo apt-get -y install ros-kinetic-ros-controllers
 sudo apt-get -y install ros-kinetic-rviz 
 
+# Install ARIA (dependency of rosaria)
+sudo dpkg -i setup/libaria_2.9.1+ubuntu16_amd64.deb
+
 # Set up catkin
 source $HOME/.bashrc
 mkdir -p $HOME/catkin_ws/src
@@ -41,9 +44,6 @@ cd $HOME/catkin_ws
 catkin_make
 echo "source $HOME/catkin_ws/devel/setup.bash" >> $HOME/.bashrc
 source $HOME/.bashrc
-
-# Install ARIA (dependency of rosaria)
-sudo dpkg -i setup/libaria_2.9.1+ubuntu16_amd64.deb
 
 # Setup Pioneer code
 cd $HOME/catkin_ws/src
