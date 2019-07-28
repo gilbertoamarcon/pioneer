@@ -10,7 +10,11 @@ Dependencies:
 
 
 
-## Setup ##
+## Overall Pioneer Robot Setup ##
+
+```./scripts/setup.sh```
+
+## Package Setup ##
 
 Go to your workspace src directory:
 

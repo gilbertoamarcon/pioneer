@@ -16,7 +16,7 @@
 		<param name="delta" value="0.05" />
 		<param name="iterations" value="20" />
 		<param name="particles" value="50" />
-		<param name="delta" value="0.025" />
+		<param name="delta" value="0.05" />
 		<param name="xmin" value="-8" />
 		<param name="xmax" value="+8" />
 		<param name="ymin" value="-8" />
