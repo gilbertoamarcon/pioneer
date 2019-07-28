@@ -20,15 +20,20 @@ sudo rosdep init
 rosdep update
 printf "\n# ROS:\nsource /opt/ros/kinetic/setup.bash\n" >> $HOME/.bashrc
 source $HOME/.bashrc
-sudo apt-get install -y python-rosinstall
-sudo apt-get install -y python-rosinstall-generator
-sudo apt-get install -y python-wstool
-sudo apt-get install -y build-essential
+sudo apt-get -y install python-rosinstall
+sudo apt-get -y install python-rosinstall-generator
+sudo apt-get -y install python-wstool
+sudo apt-get -y install build-essential
 
 # Install ROS packages needed to run pioneer code
-sudo apt-get install ros-kinetic-navigation ros-kinetic-gmapping ros-kinetic-ros-control ros-kinetic-ros-controllers ros-kinetic-rviz ros-kinetic-rocon* --yes 
+sudo apt-get -y install ros-kinetic-navigation
+sudo apt-get -y install ros-kinetic-gmapping
+sudo apt-get -y install ros-kinetic-ros-control
+sudo apt-get -y install ros-kinetic-ros-controllers
+sudo apt-get -y install ros-kinetic-rviz 
 
 # Set up catkin
+source $HOME/.bashrc
 mkdir -p $HOME/catkin_ws/src
 cd $HOME/catkin_ws/src
 catkin_init_workspace
