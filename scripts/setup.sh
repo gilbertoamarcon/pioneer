@@ -9,6 +9,7 @@ sudo apt-get upgrade --yes
 # Install pleasentries, like vim and git
 sudo apt-get -y install git
 sudo apt-get -y install openssh-server
+ssh-keygen -t rsa
 
 # ROS Kinetic installation commands
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
