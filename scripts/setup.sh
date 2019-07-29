@@ -40,6 +40,7 @@ sudo apt-get -y install ros-kinetic-gmapping
 sudo apt-get -y install ros-kinetic-ros-control
 sudo apt-get -y install ros-kinetic-ros-controllers
 sudo apt-get -y install ros-kinetic-rviz 
+sudo apt-get -y install ros-kinetic-sound-play
 
 # Install ARIA (dependency of rosaria)
 sudo dpkg -i setup/libaria_2.9.1+ubuntu16_amd64.deb
