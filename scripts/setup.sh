@@ -41,6 +41,10 @@ sudo apt-get -y install ros-kinetic-ros-control
 sudo apt-get -y install ros-kinetic-ros-controllers
 sudo apt-get -y install ros-kinetic-rviz 
 sudo apt-get -y install ros-kinetic-sound-play
+sudo apt-get -y install ros-kinetic-teleop-twist-keyboard
+
+# Changing ROS ownership
+sudo chown -R $USER $HOME/.ros
 
 # Install ARIA (dependency of rosaria)
 sudo dpkg -i setup/libaria_2.9.1+ubuntu16_amd64.deb
