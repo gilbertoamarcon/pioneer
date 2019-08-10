@@ -15,7 +15,7 @@
 	<!-- Frame transforms -->
 	<node pkg="pioneer" type="laser_tf_broadcaster" name="laser_tf_broadcaster"/>
 	<node pkg="pioneer" type="laser_publisher.py" name="laser_publisher" output="screen">
-		<param name="split_distance_threshod" value="0.40" />
+		<param name="split_distance_threshod" value="0.75" />
 		<param name="hits" value="10" />
 		<param name="robot_radius" value="0.30" />
 		<param name="max_range" value="1.5" />
