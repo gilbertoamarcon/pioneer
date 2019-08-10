@@ -2,27 +2,17 @@
 
 import rospy
 from sensor_msgs.msg import LaserScan
-from nav_msgs.msg import Odometry
 import numpy as np
 
 np.warnings.filterwarnings('ignore')
 
-def odom_callback(msg, odom_handler):
-	odom_handler[0] = msg
-
 def laser_callback(msg, args):
-	(pub, split_distance_threshod, hits, robot_radius, max_range, odom_handler) = args
+	(pub, split_distance_threshod, hits, robot_radius, max_range) = args
 	newscan = msg
 	newscan.header.stamp = rospy.get_rostime()
 	newscan.header.frame_id = 'rp_laser'
-	compensate_for_rotation(msg, odom_handler)
 	newscan.ranges = enhance_ranges(msg, split_distance_threshod, hits, robot_radius, max_range)
 	pub.publish(newscan)
-
-def compensate_for_rotation(msg, odom_handler):
-	if odom_handler[0] is not None:
-		angvel = odom_handler[0].twist.twist.angular.z
-		msg.angle_min -= angvel*msg.scan_time
 
 def enhance_ranges(msg, split_distance_threshod, hits, robot_radius, max_range):
 	xy = get_xy(msg)
@@ -101,9 +91,7 @@ def main():
 	robot_radius			= rospy.get_param('~robot_radius')
 	max_range				= rospy.get_param('~max_range')
 	pub = rospy.Publisher('/base_scan', LaserScan, queue_size=10, latch=True)
-	odom_handler = [None]
-	rospy.Subscriber('/odom', Odometry, odom_callback, odom_handler)
-	rospy.Subscriber('/scan', LaserScan, laser_callback, (pub, split_distance_threshod, hits, robot_radius, max_range, odom_handler))
+	rospy.Subscriber('/scan', LaserScan, laser_callback, (pub, split_distance_threshod, hits, robot_radius, max_range))
 	rospy.spin()
 
 if __name__ == '__main__':
