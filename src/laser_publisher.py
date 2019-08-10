@@ -2,28 +2,39 @@
 
 import rospy
 from sensor_msgs.msg import LaserScan
+from nav_msgs.msg import Odometry
 import numpy as np
 
 np.warnings.filterwarnings('ignore')
 
-def sonarPC2Callback(msg, args):
-	(pub, split_distance_threshod, hits, robot_radius, max_range) = args
+def odom_callback(msg, odom_handler):
+	odom_handler[0] = msg
+
+def laser_callback(msg, args):
+	(pub, split_distance_threshod, hits, robot_radius, max_range, odom_handler) = args
 	newscan = msg
 	newscan.header.stamp = rospy.get_rostime()
 	newscan.header.frame_id = 'rp_laser'
-	newscan.ranges = enhance_ranges(msg.ranges, split_distance_threshod, hits, robot_radius, max_range)
+	compensate_for_rotation(msg, odom_handler)
+	newscan.ranges = enhance_ranges(msg, split_distance_threshod, hits, robot_radius, max_range)
 	pub.publish(newscan)
 
-def enhance_ranges(ranges, split_distance_threshod, hits, robot_radius, max_range):
-	xy = get_xy(ranges)
+def compensate_for_rotation(msg, odom_handler):
+	if odom_handler[0] is not None:
+		angvel = odom_handler[0].twist.twist.angular.z
+		msg.angle_min -= angvel*msg.scan_time
+
+def enhance_ranges(msg, split_distance_threshod, hits, robot_radius, max_range):
+	xy = get_xy(msg)
+	xy = np.append(xy[len(xy)/2::], xy[0:len(xy)/2], axis=0)
 	sxy = get_split(xy, split_distance_threshod=split_distance_threshod)
 	robots = get_robots(sxy, hits=hits)
-	return get_new_ranges(ranges, robots, robot_radius=robot_radius, max_range=max_range)
+	return get_new_ranges(msg.ranges, robots, robot_radius=robot_radius, max_range=max_range)
 
-def get_xy(ranges):
-	t = np.linspace(0.0, 2*np.pi, len(ranges), endpoint=False)
-	x = ranges * np.cos(t)
-	y = ranges * np.sin(t)
+def get_xy(msg):
+	t = np.linspace(msg.angle_min, msg.angle_max, len(msg.ranges), endpoint=False)
+	x = msg.ranges * np.cos(t)
+	y = msg.ranges * np.sin(t)
 	return np.transpose(np.concatenate(((x,),(y,))))
 
 def get_split(xy, split_distance_threshod):
@@ -39,12 +50,17 @@ def get_split(xy, split_distance_threshod):
 
 def get_robots(sxy, hits):
 	robots = []
-	ctr = 0
-	for s in sxy:
+	old_pos = 180
+	for i,s in enumerate(sxy):
 		size = len(s)
-		if size < hits:
-			robots.append((ctr,ctr+size))
-		ctr += size
+		new_pos = (old_pos+size)%360
+		if size < hits and i > 0 and i < len(sxy)-1:
+			if old_pos > new_pos:
+				robots.append((old_pos,359))
+				robots.append((0,new_pos))
+			else:
+				robots.append((old_pos,new_pos))
+		old_pos = new_pos
 	return robots
 
 def get_new_ranges(ranges, robots, robot_radius, max_range):
@@ -85,7 +101,9 @@ def main():
 	robot_radius			= rospy.get_param('~robot_radius')
 	max_range				= rospy.get_param('~max_range')
 	pub = rospy.Publisher('/base_scan', LaserScan, queue_size=10, latch=True)
-	rospy.Subscriber('/scan', LaserScan, sonarPC2Callback, (pub, split_distance_threshod, hits, robot_radius, max_range))
+	odom_handler = [None]
+	rospy.Subscriber('/odom', Odometry, odom_callback, odom_handler)
+	rospy.Subscriber('/scan', LaserScan, laser_callback, (pub, split_distance_threshod, hits, robot_radius, max_range, odom_handler))
 	rospy.spin()
 
 if __name__ == '__main__':
