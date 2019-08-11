@@ -85,7 +85,7 @@ def get_mean_idx(r, ranges):
 	return int(np.mean(clean))
 
 def main():
-	rospy.init_node('laser_publisher')
+	rospy.init_node('laser_publisher_pioneer_inflation.py')
 	split_distance_threshod	= rospy.get_param('~split_distance_threshod')
 	hits					= rospy.get_param('~hits')
 	robot_radius			= rospy.get_param('~robot_radius')

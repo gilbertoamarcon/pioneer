@@ -1,10 +1,12 @@
 <launch>
 
+	<!-- Pioneer -->
+	<include file="$(find pioneer)/launch/pioneer.launch">
+		<arg name="sensors" value="$(find pioneer)/launch/sensors_pioneer_inflation.launch" />
+	</include>
+
 	<!-- Map file -->
 	<arg name="map_name" default="$(env HOME)/map/map.yaml"/>
-
-	<!-- Pioneer -->
-	<include file="$(find pioneer)/launch/pioneer.launch"/>
 
 	<!-- Map server -->
 	<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_name)" >

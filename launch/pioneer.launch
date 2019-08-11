@@ -1,5 +1,8 @@
 <launch>
 
+	<!-- Sensors launch file -->
+	<arg name="sensors" default="$(find pioneer)/launch/sensors.launch"/>
+
 	<!-- Rosaria -->
 	<node pkg="rosaria" type="RosAria" name="RosAria" output="screen">
 		<param name="port" value="/dev/rosaria" />
@@ -7,7 +10,7 @@
 	</node>
 
 	<!-- Sensors -->
-	<include file="$(find pioneer)/launch/sensors.launch"/>
+	<include file="$(arg sensors)"/>
 
 	<!-- Move base -->
 	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
