@@ -1,0 +1,15 @@
+minimumScore: 600.0
+linearUpdate: 0.00
+angularUpdate: 0.00
+srr: 0.10
+srt: 0.005
+str: 0.025
+stt: 0.005
+delta: 0.10
+iterations: 20
+particles: 50
+xmin: -8
+xmax: +8
+ymin: -8
+ymax: +8
+maxUrange: 8

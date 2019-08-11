@@ -1,26 +1,14 @@
 <launch>
 
 	<!-- Pioneer -->
-	<include file="$(find pioneer)/launch/pioneer.launch"/>
+	<include file="$(find pioneer)/launch/pioneer.launch">
+		<arg name="mode" value="mapping" />
+	</include>
 
 	<!-- SLAM mapping nodes -->
 	<node pkg="gmapping" type="slam_gmapping" name="gmapping">
-		<remap from="scan" to="base_scan"/> 
-		<param name="minimumScore" value="600.0" />
-		<param name="linearUpdate" value="0.00" />
-		<param name="angularUpdate" value="0.00" />
-		<param name="srr" value="0.05" />
-		<param name="srt" value="0.05" />
-		<param name="str" value="0.05" />
-		<param name="stt" value="0.05" />
-		<param name="delta" value="0.05" />
-		<param name="iterations" value="20" />
-		<param name="particles" value="50" />
-		<param name="delta" value="0.05" />
-		<param name="xmin" value="-8" />
-		<param name="xmax" value="+8" />
-		<param name="ymin" value="-8" />
-		<param name="ymax" value="+8" />
+		<remap from="scan" to="base_scan"/>
+		<rosparam file="$(find pioneer)/param/gmapping/gmapping.yaml" command="load" />
 	</node>
 
 </launch>

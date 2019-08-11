@@ -1,0 +1,4 @@
+split_distance_threshod: 0.50
+hits: 10
+robot_radius: 0.30
+max_range: 1.5
