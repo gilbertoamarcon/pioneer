@@ -41,10 +41,10 @@ def get_split(xy, split_distance_threshod):
 def get_robots(sxy, hits):
 	robots = []
 	old_pos = 180
-	for i,s in enumerate(sxy):
+	for s in sxy:
 		size = len(s)
 		new_pos = (old_pos+size)%360
-		if size < hits and i > 0 and i < len(sxy)-1:
+		if size < hits:
 			if old_pos > new_pos:
 				robots.append((old_pos,359))
 				robots.append((0,new_pos))
