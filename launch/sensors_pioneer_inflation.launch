@@ -4,7 +4,7 @@
 	<node pkg="pioneer" type="odometry_publisher" name="odometry_publisher"/>
 	
 	<!-- RPLidar -->
-	<node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+	<node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" >
 		<param name="serial_port"         type="string" value="/dev/rplidar"/>  
 		<param name="serial_baudrate"     type="int"    value="115200"/>
 		<param name="frame_id"            type="string" value="laser"/>
@@ -14,7 +14,7 @@
 	
 	<!-- Frame transforms -->
 	<node pkg="pioneer" type="laser_tf_broadcaster" name="laser_tf_broadcaster"/>
-	<node pkg="pioneer" type="laser_publisher_pioneer_inflation.py" name="laser_publisher_pioneer_inflation" output="screen">
+	<node pkg="pioneer" type="laser_publisher_pioneer_inflation.py" name="laser_publisher_pioneer_inflation" >
 		<rosparam file="$(find pioneer)/param/pioneer_inflation/pioneer_inflation.yaml" command="load" />
 	</node>
 	

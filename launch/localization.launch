@@ -14,7 +14,7 @@
 	</node>
 
 	<!-- AMCL -->
-	<node pkg="amcl" type="amcl" name="amcl" output="screen">
+	<node pkg="amcl" type="amcl" name="amcl">
 		<remap from="scan" to="base_scan"/>    
 		<remap from="static_map" to="/static_map" /> 
 		<remap from="map" to="/map" />

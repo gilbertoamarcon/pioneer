@@ -5,7 +5,7 @@
 	<arg name="mode" default="localization"/>
 
 	<!-- Rosaria -->
-	<node pkg="rosaria" type="RosAria" name="RosAria" output="screen">
+	<node pkg="rosaria" type="RosAria" name="RosAria" >
 		<param name="port" value="/dev/rosaria" />
 		<remap from="/RosAria/cmd_vel" to="/cmd_vel"/>
 	</node>
@@ -14,7 +14,7 @@
 	<include file="$(arg sensors)"/>
 
 	<!-- Move base -->
-	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+	<node pkg="move_base" type="move_base" respawn="false" name="move_base" >
 		<rosparam file="$(find pioneer)/param/movebase/$(arg mode)/costmap_common_params.yaml" command="load" ns="global_costmap" />
 		<rosparam file="$(find pioneer)/param/movebase/$(arg mode)/costmap_common_params.yaml" command="load" ns="local_costmap" />
 		<rosparam file="$(find pioneer)/param/movebase/$(arg mode)/local_costmap_params.yaml" command="load" />
