@@ -22,7 +22,7 @@ recovery_behaviors:
 - name: 'rotate_recovery'
   type: 'rotate_recovery/RotateRecovery'
 costmap_reset_conservative:
-  reset_distance: 1.5
+  reset_distance: 15.0
   layer_names: ['obstacle_layer']
 aggressive_reset:
   reset_distance: 15.0
