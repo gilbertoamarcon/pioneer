@@ -37,9 +37,9 @@ recovery_alpha_slow: 0.001
 recovery_alpha_fast: 0.1
 
 # Initial Pose
-initial_pose_x: 1.00
-initial_pose_y: 0.00
+initial_pose_x: 7.00
+initial_pose_y: 1.00
 initial_pose_a: 0.00
-initial_cov_xx: 3.00
-initial_cov_yy: 3.00
+initial_cov_xx: 2.50
+initial_cov_yy: 2.50
 initial_cov_aa: 0.05
